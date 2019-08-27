@@ -1,33 +1,109 @@
-.App {
-  text-align: center;
+/* body{
+  //background: #A6C36F;
+} */
+.navbar{
+z-index: 1;
+position:fixed;
+width: 1440px;
+height: 67px;
+left: 0px;
+top: 0px;
+background: #08090A;
+}
+.searchfield{
+  position: absolute;
+  width: 195px;
+  height: 46px;
+  left: 60px;
+  top: 12px;
+  
+  background: #020304;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.Logo{
+position: absolute;
+width: 242px;
+height: 51px;
+left: 40%;
+top: 5px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 48px;
+line-height: 56px;
+text-align: center;
+color:#FFFFFF;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Categories*/
+.category{
+position: absolute;
+text-align: center;
 
-.App-link {
-  color: #61dafb;
-}
+width: 425px;
+height: 43px;
+right: 0px;
+top: 7px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.category>a{
+  
+  width:30px;
+  
+  margin-left: 60px;
+  color: #FFFFFF;
+  
+}
+/**/
+.banner{
+position: relative;
+
+width: 100%;
+height: 220px;
+top: 49px;
+border: 1px solid #000000;
+backdrop-filter: blur(4px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 1px;
+}
+.filter{
+position:relative;
+
+width: 135px;
+height: 300px;
+left: 35px;
+top: 80px;
+
+background: #F7F6EB;
+}
+/*Sneakers*/
+.sneakers_per_row{
+  margin-left:100px;
+}
+.sneakers{
+  display:inline-block;
+  position:relative;
+  right:0px;
+  width:240px;
+  height:315px;
+  margin-left: 50px;
+  margin-top:25px;
+  background: #FFF7B0;  
+}
+.sneakers>img{
+  background:red;
+  position:absolute;
+  height:55%;
+  width:240px;
+}
+/**/
+.footer{
+position:relative;
+width: 100%;
+height: 130px;
+left: 0px;
+top:100%;
+margin: 0 auto;
+background: #08090A;
 }
