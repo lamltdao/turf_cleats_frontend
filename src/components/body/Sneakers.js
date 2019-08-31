@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
 export default class Sneakers extends Component {
+    state={ name:null,
+            prize:null,
+            image:null
+    }
+    
     render() {
         return (
             <div className='sneakers'>
-                    <img src=''/>
+                    <img src='' alt=''/>
                     <div className='sneakers_name'>
                     {
 

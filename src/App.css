@@ -61,7 +61,7 @@ position: relative;
 
 width: 100%;
 height: 220px;
-top: 49px;
+top: 70p  x;
 border: 1px solid #000000;
 backdrop-filter: blur(4px);
 /* Note: backdrop-filter has minimal browser support */
@@ -69,17 +69,24 @@ border-radius: 1px;
 }
 .filter{
 position:relative;
-
 width: 135px;
 height: 300px;
 left: 35px;
 top: 80px;
-
 background: #F7F6EB;
+}
+.filter>h1{
+  position:absolute;
+  font-size:30px;
+  text-align: center;
+}
+.filter>#sort_list{
+  position: absolute;
+  top:20%;
 }
 /*Sneakers*/
 .sneakers_per_row{
-  margin-left:100px;
+  margin-left:20%;
 }
 .sneakers{
   display:inline-block;
@@ -88,7 +95,9 @@ background: #F7F6EB;
   width:240px;
   height:315px;
   margin-left: 50px;
+  margin-right:50px;
   margin-top:25px;
+  margin-bottom: 25px;
   background: #FFF7B0;  
 }
 .sneakers>img{
@@ -99,11 +108,12 @@ background: #F7F6EB;
 }
 /**/
 .footer{
-position:relative;
-width: 100%;
+position:absolute;
+width: 1700px;
 height: 130px;
 left: 0px;
 top:100%;
 margin: 0 auto;
 background: #08090A;
 }
+
