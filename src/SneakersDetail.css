@@ -34,6 +34,9 @@
         height:10%;
         top: 20%;
     }
+    .quantity{
+        position: absolute;
+    }
     #btn_add_to_cart{
         position:absolute;
         background: orangered;

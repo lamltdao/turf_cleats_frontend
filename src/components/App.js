@@ -20,6 +20,7 @@ export default class App extends Component {
             <Route path='/account' component={Auth}/>
             <Route path='/sneakers/:id' component={SneakersDetail}/>
             <Route path='/cart' component={Cart}/>
+            
           </Switch>
           </BrowserRouter>
           <Footer/>

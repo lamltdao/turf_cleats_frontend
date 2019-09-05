@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Sneakers extends Component {
-    state={ name:null,
-            prize:null,
-            image:null
-    }
     
+
     render() {
         return (
             <div className='sneakers'>
-                    <img src='' alt=''/>
+                <Link to={`/sneakers/`+this.props._id}>
+                    <img src={this.props.image} alt='' />
                     <div className='sneakers_name'>
-                    {
-
-                    }
+                        {
+                            this.props.name
+                        }
                     </div>
                     <div className='sneakers_prize'>
-                    {
-                        
-                    }
+                        {
+                            this.props.prize
+                        }
                     </div>
+                </Link>
             </div>
         )
     }
