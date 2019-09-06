@@ -9,9 +9,11 @@ export default class SneakersDetail extends Component {
         prize: null,
         image: null,
         quantity:null,
-        id:null
+        sneakersId:null,
+        
     }
     componentWillMount() {
+        
         const sneakersId = this.props.match.params.id;
         axios({
             url: base_url + '/api/sneakers/' + sneakersId,
@@ -22,13 +24,13 @@ export default class SneakersDetail extends Component {
                     name: data.data.name,
                     prize: data.data.prize,
                     image: data.data.image,
-                    id:data.data._id
+                    sneakersId:data.data._id
                 });
             })
             .catch(err => {
                 console.log(err);
-
             })
+        
     }
 
     render() {
@@ -52,13 +54,12 @@ export default class SneakersDetail extends Component {
     }
 
     addToCart=(event)=>{
-        axios({
-            method:'',
-            url:'',
-            data:{
-                quantity:this.state.quantity,
-                id:this.state.id
-            }
-        })
+        // axios({
+        //     method:'PUT',
+        //     url:base_url+'/package/'+this.state.packageId,
+        //     data:{
+        //         quantity:this.state.quantity,
+        //     }
+        // })
     }
 }

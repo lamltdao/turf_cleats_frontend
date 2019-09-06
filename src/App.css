@@ -10,51 +10,51 @@ left: 0px;
 top: 0px;
 background: #08090A;
 }
-.searchfield{
-  position: absolute;
-  width: 195px;
-  height: 46px;
-  left: 60px;
-  top: 12px;
-  
-  background: #020304;
-}
+      .searchfield{
+      position: absolute;
+      width: 195px;
+      height: 46px;
+      left: 60px;
+      top: 12px;
+      
+      background: #020304;
+      }
 
-.Logo{
-position: absolute;
-width: 242px;
-height: 51px;
-left: 40%;
-top: 5px;
+      .Logo{
+      position: absolute;
+      width: 242px;
+      height: 51px;
+      left: 40%;
+      top: 5px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 48px;
-line-height: 56px;
-text-align: center;
-color:#FFFFFF;
-}
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 48px;
+      line-height: 56px;
+      text-align: center;
+      color:#FFFFFF;
+      }
 
-/* Categories*/
-.category{
-position: absolute;
-text-align: center;
+    /* Categories*/
+      .category{
+      position: absolute;
+      text-align: center;
 
-width: 425px;
-height: 43px;
-right: 0px;
-top: 7px;
+      width: 425px;
+      height: 43px;
+      right: 0px;
+      top: 7px;
 
-}
-.category>a{
-  
-  width:30px;
-  
-  margin-left: 60px;
-  color: #FFFFFF;
-  
-}
+      }
+      .category>a{
+        
+        width:30px;
+        
+        margin-left: 60px;
+        color: #FFFFFF;
+        
+      }
 /**/
 .banner{
 position: relative;
@@ -108,11 +108,12 @@ background: #F7F6EB;
 }
 /**/
 .footer{
-position:absolute;
-width: 1700px;
+z-index: -1;
+position: relative;
+/* width: 100%; */
 height: 130px;
 left: 0px;
-top:100%;
+bottom:0%;
 margin: 0 auto;
 background: #08090A;
 }
