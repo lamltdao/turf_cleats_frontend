@@ -10,6 +10,9 @@ import SneakersDetail from './body/SneakersDetail';
 import Cart from './body/Cart';
 export default class App extends Component {
   
+  componentWillMount(){
+    
+  }  
   render() {
     return (
       <div>

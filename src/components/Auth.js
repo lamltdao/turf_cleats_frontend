@@ -19,27 +19,9 @@ export default class Auth extends Component {
 			}
 		})
 		.then(data=>{
-			console.log(data);
-			
 			window.localStorage.setItem('access_token',data);
+			
 			console.log('Successfully Login');
-			//Sau khi login thành công thì tạo luôn 1 package.
-			axios({
-				url:base_url+'/api/package/',
-				method:'POST',
-				data:{
-					package:[],
-					user:data.data.id
-				}
-			})
-			.then(data=>{
-				//console.log(data);
-				
-			})
-			.catch(err=>{
-				console.log(err);
-				
-			})
 		})
 		.catch(err=>{
 			console.log(err);
