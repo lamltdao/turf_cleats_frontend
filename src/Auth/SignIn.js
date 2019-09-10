@@ -12,20 +12,21 @@ export default class Auth extends Component {
 		event.preventDefault();
 		axios({
 			method:'POST',
-			url:'http://localhost:2504/api/auth/login',
+			url:base_url+'/api/auth/login',
 			data:{
 				username:this.state.username,
 				password:this.state.password
 			}
 		})
 		.then(data=>{
-			window.localStorage.setItem('access_token',data);
+			console.log(data);
 			
+			window.localStorage.setItem('access_token',data.data.token);
 			console.log('Successfully Login');
+			window.location.href='/';
 		})
 		.catch(err=>{
 			console.log(err);
-			
 		})
 	}
 	handleChange=(event)=>{
@@ -36,7 +37,7 @@ export default class Auth extends Component {
 	
 	render() {
         return (
-            <div className='auth'>
+            <div className='sign_in'>
                 <div className="container">
 	<div className="d-flex justify-content-center h-100">
 		<div className="card">
@@ -73,7 +74,7 @@ export default class Auth extends Component {
 			</div>
 			<div className="card-footer">
 				<div className="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
+					Don't have an account?<a href="/sign_up">Sign Up</a>
 				</div>
 				<div className="d-flex justify-content-center">
 					<a href="#">Forgot your password?</a>

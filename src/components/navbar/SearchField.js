@@ -5,7 +5,7 @@ export default class SearchField extends Component {
         return (
             <div className='searchfield'>
                 <form className='col-12'>
-                    <input className='form-control' type='text' placeholder='Search' onChange={this.props.OnKeyWordChange}/>
+                    <input className='form-control' type='text' placeholder='Search' onChange={this.props.onKeyWordChange}/>
                 </form>
             </div>
         )

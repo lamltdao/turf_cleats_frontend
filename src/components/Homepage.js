@@ -10,7 +10,7 @@ export default class Homepage extends Component {
             <div className='homepage'>
                 <Banner/>
                 <Filter/>
-                <SneakersList/>
+                <SneakersList keyWordSearch={this.props.keyWordSearch}/>
             </div>
         )
     }

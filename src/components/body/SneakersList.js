@@ -17,22 +17,24 @@ export default class SneakersList extends Component {
        * prize
        * } */
       .then(data => {
-        
-        
         this.setState({sneakerslist:data.data});
-        
-        
       })
       .catch(err => {
         console.log(err);
       })
   }
   render() {
+    const { keyWordSearch } = this.props;
     return (
       <div className='sneakers_list'>
         <div className='sneakers_per_row'>
           {
-            this.state.sneakerslist.map((item, index) => {
+            this.state.sneakerslist
+            .filter((item,index)=>{
+              if(keyWordSearch) return item.name.toLowerCase().indexOf(keyWordSearch.toLowerCase()) > -1; 
+              return true;
+             })
+            .map((item, index) => {
               return <Sneakers key={index} {...item} />//{...item}=object.asign(key,item) return a new obj 
             })
           }

@@ -51,15 +51,22 @@ export default class SneakersDetail extends Component {
     }
     quantityChange = (event) => {
         const quantity = event.target.value;
-        this.setState({ quantity: quantity });
+        this.setState({ quantity: Number(quantity) });
     }
 
     addToCart = (event) => {
         if (window.localStorage.getItem('cart')) {
             var cart = window.localStorage.getItem('cart');
             cart = JSON.parse(cart);
-
-            cart.push({ id: this.state.sneakersId, quantity: this.state.quantity });
+            const isExist = cart.filter((item, index)=>{
+                if (this.state.sneakersId==item.id) {
+                    cart[index].quantity+=this.state.quantity;
+                    return true;
+                } else return false;
+            })[0];
+            if(!isExist){
+                cart.push({id:this.state.sneakersId,quantity:this.state.quantity,name:this.state.name});
+            }
             window.localStorage.setItem('cart', JSON.stringify(cart));
             console.log(cart);
         }
@@ -68,10 +75,9 @@ export default class SneakersDetail extends Component {
             window.localStorage.setItem('cart', JSON.stringify(initiate_cart));
             var cart = window.localStorage.getItem('cart');
             cart = JSON.parse(cart);
-            cart.push({ id: this.state.sneakersId, quantity: this.state.quantity });
+            cart.push({ id: this.state.sneakersId, quantity: this.state.quantity,name:this.state.name});
             window.localStorage.setItem('cart', JSON.stringify(cart));
             console.log(cart);
-
         }
 
     }

@@ -55,6 +55,16 @@ background: #08090A;
         color: #FFFFFF;
         
       }
+      #user_info{
+        position: absolute;
+        width: 10%;
+        height:100%;
+        right:25%;
+        border:white 1px solid;
+        color:blue;
+        text-align: center;
+        font-size: 25px;
+      }
 /**/
 .banner{
 position: relative;
@@ -106,6 +116,8 @@ background: #F7F6EB;
   height:55%;
   width:240px;
 }
+
+
 /**/
 .footer{
 z-index: -1;
