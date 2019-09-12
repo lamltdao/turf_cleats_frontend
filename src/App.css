@@ -1,7 +1,7 @@
 /* body{
   //background: #A6C36F;
 } */
-.navbar{
+/* .navbar{
 z-index: 1;
 position:fixed;
 width: 1440px;
@@ -9,18 +9,18 @@ height: 67px;
 left: 0px;
 top: 0px;
 background: #08090A;
-}
+} */
       .searchfield{
       position: absolute;
       width: 195px;
       height: 46px;
-      left: 60px;
       top: 12px;
+      right:50%;
+      /* background: #020304; */
       
-      background: #020304;
       }
 
-      .Logo{
+      /* .Logo{
       position: absolute;
       width: 242px;
       height: 51px;
@@ -37,7 +37,7 @@ background: #08090A;
       }
 
     /* Categories*/
-      .category{
+     /* .category{
       position: absolute;
       text-align: center;
 
@@ -54,7 +54,7 @@ background: #08090A;
         margin-left: 60px;
         color: #FFFFFF;
         
-      }
+      } */
       #user_info{
         position: absolute;
         width: 10%;
@@ -94,9 +94,11 @@ background: #F7F6EB;
   position: absolute;
   top:20%;
 }
-/*Sneakers*/
-.sneakers_per_row{
+
+
+ .sneakers_per_row{
   margin-left:20%;
+  
 }
 .sneakers{
   display:inline-block;
@@ -109,7 +111,12 @@ background: #F7F6EB;
   margin-top:25px;
   margin-bottom: 25px;
   background: #FFF7B0;  
-}
+  }
+
+
+
+
+
 .sneakers>img{
   background:red;
   position:absolute;
@@ -118,16 +125,17 @@ background: #F7F6EB;
 }
 
 
-/**/
+
+
 .footer{
 z-index: -1;
 position: relative;
-/* width: 100%; */
+width:100%;
 height: 130px;
 left: 0px;
 bottom:0%;
 margin: 0 auto;
-background: #08090A;
-}
+background: #08090A;}
+
 
 

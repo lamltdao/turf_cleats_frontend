@@ -11,6 +11,7 @@ import Cart from './body/Cart';
 import SignUp from '../Auth/SignUp';
 import axios from 'axios';
 import { base_url } from '../config';
+
 export default class App extends Component {
   state = {
     userInfo: {
@@ -40,7 +41,7 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' render={(props) => <Homepage userInfo={this.state.userInfo} keyWordSearch={this.state.keyWordSearch} {...props} />} />
-            <Route path='/account' component={SignIn} />
+            <Route path='/sign_in' component={SignIn} />
             <Route path='/sign_up' component={SignUp} />
             <Route path='/sneakers/:id' component={SneakersDetail} />
             <Route path='/cart' component={Cart} />
@@ -48,6 +49,7 @@ export default class App extends Component {
           </Switch>
         </BrowserRouter>
         <Footer />
+        
       </div>
     )
   }

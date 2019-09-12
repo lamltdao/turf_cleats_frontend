@@ -44,6 +44,9 @@ export default class SneakersDetail extends Component {
                     <div className='quantity'>
                         <Input type="number" onChange={this.quantityChange} step={1} min={0} placeholder='quantity' />
                     </div>
+                    <div className='size'>
+
+                    </div>
                     <Button id='btn_add_to_cart' type='button' onClick={this.addToCart}>Add to cart</Button>
                 </div>
             </div>
@@ -59,7 +62,7 @@ export default class SneakersDetail extends Component {
             var cart = window.localStorage.getItem('cart');
             cart = JSON.parse(cart);
             const isExist = cart.filter((item, index)=>{
-                if (this.state.sneakersId==item.id) {
+                if (this.state.sneakersId===item.id) {
                     cart[index].quantity+=this.state.quantity;
                     return true;
                 } else return false;
