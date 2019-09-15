@@ -28,10 +28,10 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md" >
+        <Navbar color="success" light expand="md" >
           <Logo />
           <SearchField onKeyWordChange={this.props.onKeyWordChange} />
-          <NavItem>{this.props.userInfo.name}</NavItem>
+          <div id='user_info'>{this.props.userInfo.name}</div>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
 
@@ -49,7 +49,7 @@ export default class NavBar extends Component {
                 </DropdownToggle>
                 
                   <DropdownMenu right>
-                    <DropDownAuth userInfo={this.props.userInfo.name}/>
+                    <DropDownAuth userInfo={this.props.userInfo}/>
                   </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

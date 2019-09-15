@@ -36,7 +36,7 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='main'>
         <NavBar userInfo={this.state.userInfo} onKeyWordChange={this.onKeyWordChange}/>
         <BrowserRouter>
           <Switch>
@@ -45,7 +45,6 @@ export default class App extends Component {
             <Route path='/sign_up' component={SignUp} />
             <Route path='/sneakers/:id' component={SneakersDetail} />
             <Route path='/cart' component={Cart} />
-
           </Switch>
         </BrowserRouter>
         <Footer />

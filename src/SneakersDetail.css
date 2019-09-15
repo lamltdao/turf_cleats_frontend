@@ -1,48 +1,70 @@
 .sneakers_detail{
-    position: absolute;
-    width:75%;
+    
+    width:80%;
     height:400px;
     top:200px;
-    left:30%;
-    right:0px;
+    left:10%;
+    
 }
-.sneakers_img{
-    position:absolute;
-    width:25%;
+.sneakers_img_detail{
+    margin-top: 100px;
+    width:30%;
     height:100%;
-    background: yellow;
+    
+    
 }
 .description{
+    margin-top: 100px;
     border:solid;
-    position:absolute;
+    
     right:0px;
     width:50%;
-    height:100%;
     background:#FFFFFF;
 }
-    .sneakers_name{
-        position: absolute;
+    .sneakers_name_detail{
+        margin-top: 20px;
         text-align: center;
         width:100%;
         height:20%;
+        bottom:13%;
+    }
+
+    .sneakers_quantity_detail{
+        width:100%;
+        margin-bottom:20px;
         
     }
-    .sneakers_prize{
-        position: absolute;
+    .sneakers_prize_detail{
+        
         text-align: center;
+        font-size: 150%;
         width:100%;
         height:10%;
-        top: 20%;
+        bottom: 10%;
     }
     .quantity{
-        position: absolute;
+        
+        bottom:0px;
+        width:100%;
+    }
+    .center{
+        margin-top: 30%;    
+        text-align: center;
+        
     }
     #btn_add_to_cart{
-        position:absolute;
+        
         background: orangered;
         height:30%;
         width:50%;
         left:25%;
-        bottom: -200px;
+        bottom: 0px;
+        
+    }
+    .btn{
+        width: 100%;
+    }
+    .sneakers_size_detail{
+        
         
     }
