@@ -6,24 +6,22 @@ import { base_url } from '../../config';
 import '../../Cart.css';
 export default class Cart extends Component {
     state = {
-        cart: []
+        cart: [],
+        package:[]
     }
 
 
     componentWillMount() {
         var cart = window.localStorage.getItem('cart');
         cart = JSON.parse(cart);
-        if(cart){
-            cart.map((item, index) => {
+        
+        cart.map((item, index) => {
                 this.state.cart.push(item);
             })
-        }
-        
         //this.setState({cart:cart})
     }
     render() {
-        console.log(this.state.cart);
-
+       
         return (
             <div className='cart_detail'>
                 <Table>
@@ -33,19 +31,57 @@ export default class Cart extends Component {
                             <th>Product's Name</th>
                             <th>Quantity</th>
                             <th>Size</th>
-                            <th>Prize</th>
+                            <th>Price</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.renderSneakers()}
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total:</th>
+                        <th>{this.renderTotalPrice()}</th>
                     </tbody>
                 </Table>
+
+                <form onSubmit={this.submitPackage}><Button type='submit' color='primary' id='submitPackage' >Submit</Button></form>
             </div>
         )
     }
+
+    // submitPackage=(event)=>{
+    //     event.preventDefault();
+    //     axios({
+    //         method:'POST',
+    //         url:base_url+'/api/package/',
+    //         data:{
+    //             package:this.state.package
+    //         }
+    //     })
+    //     .then(data=>{
+    //         //modal :'...'
+    //     })
+    //     .catch(err=>{
+    //         console.log(err);
+    //     })
+    // }
+
+    renderTotalPrice=(event)=>{
+        var price=0;
+        const totalPrice=this.state.cart.reduce((price,item)=>{
+            return price+Number(item.prize*item.quantity);
+        },0);
+        price+=totalPrice;
+        return price;
+    }
     renderSneakers = (event) => {
         return this.state.cart.map((item, index) => {
+            this.state.package.push({
+                sneakers:item.sneakersId,
+                quantity:item.quantity,
+                size:item.size
+            });
             return <tr>
                 <td scope='row'>{index+1}</td>
                 <td>

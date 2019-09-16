@@ -100,7 +100,7 @@ export default class SneakersDetail extends Component {
         this.setState({
             dropdownOpen:!this.state.dropdownOpen,
             size:event.target.innerText,
-            dropDownValue:event.target.innerText
+            dropDownValue:parseFloat(event.target.innerText)
         })
     }
 
@@ -117,8 +117,7 @@ export default class SneakersDetail extends Component {
         //display message
         this.setState({ modal: !this.state.modal });
         //add to cart
-        console.log(typeof(this.state.dropDownValue))
-        
+        if(this.state.quantity>0&&this.state.size){
             if (window.localStorage.getItem('cart')) {
                 var cart = window.localStorage.getItem('cart');
                 cart = JSON.parse(cart);
@@ -139,7 +138,7 @@ export default class SneakersDetail extends Component {
                 }
                 
                 window.localStorage.setItem('cart', JSON.stringify(cart));
-                console.log(cart);
+                
             }
             else {
                 const initiate_cart = []
@@ -156,6 +155,6 @@ export default class SneakersDetail extends Component {
                 window.localStorage.setItem('cart', JSON.stringify(cart));
                 
             }
-        
+        }
     }
 }
