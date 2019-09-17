@@ -18,7 +18,7 @@ export default class App extends Component {
       name: '',
       role: ''
     },
-    keyWordSearch: ''
+    keyWordSearch: '' 
   }
   componentWillMount() {
     const access_token = window.localStorage.getItem('access_token');

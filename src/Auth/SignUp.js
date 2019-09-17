@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { base_url } from '../config';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 export default class SignUp extends Component {
-    state={
-        username:'',
-        password:'',
-        name:'',
-        phone_number:'',
-        enum:'member'
+    state = {
+        username: null,
+        password: null,
+        name: null,
+        phone_number: null,
+        enum: 'member',
+        messageInSignUp:''
     }
     render() {
         return (
@@ -55,37 +58,46 @@ export default class SignUp extends Component {
                                         </div>
 
                                         <div className="row align-items-center remember">
-                    
-					</div>
+
+                                        </div>
                                         <div className="form-group">
-                                            <input type="submit" value="Register" className="btn float-right login_btn" />
+                                            {/* <input type="submit" value="Register" className="btn float-right login_btn" /> */}
+                                            <Button type='submit'>Register</Button>
                                         </div>
                                     </form>
                                 </div>
-                                
+                                <div className="card-footer">
+                                    <div className="d-flex justify-content-center" color='warning' >
+                                        {this.state.messageInSignUp}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         )
     }
-    register=(event)=>{
+    register = (event) => {
         event.preventDefault();
         axios({
-            method:'POST',
-            url:base_url+'/api/user',
-            data:this.state
+            method: 'POST',
+            url: base_url + '/api/user',
+            data: this.state
         })
-        .then(data=>{console.log(data);
-        })
-        .catch(err=>{console.log(err);
+            .then(data => {
+                this.setState({messageInSignUp:'Register successful'})
+
+            })
+            .catch(err => {
+               this.setState({messageInSignUp:'Register failed'})
+            })
+    }
+    handleChange = (event) => {
+        this.setState({
+             [event.target.name]: event.target.value 
         })
     }
-    handleChange=(event)=>{
-		this.setState({
-			[event.target.name]:event.target.value
-		})
-	}
+
 }

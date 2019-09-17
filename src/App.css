@@ -1,27 +1,24 @@
 body{
-  background:#E8F7EE;
+  background:#8EB897;
   
 }
 .main{
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-content: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  }
+.nav_bar{
+    background-color:#3E721D
 }
-/* .navbar{
-z-index: 1;
-position:fixed;
-width: 1440px;
-height: 67px;
-left: 0px;
-top: 0px;
-background: #08090A;
-} */
       .Logo{
         position: absolute;
-        left:45%;
+        left:48%;
       }
+        #Logo{
+          color: black
+        }
       .searchfield{
       position: absolute;
       width: 195px;
@@ -32,41 +29,7 @@ background: #08090A;
       
       }
 
-      /* .Logo{
-      position: absolute;
-      width: 242px;
-      height: 51px;
-      left: 40%;
-      top: 5px;
-
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 48px;
-      line-height: 56px;
-      text-align: center;
-      color:#FFFFFF;
-      }
-
-    /* Categories*/
-     /* .category{
-      position: absolute;
-      text-align: center;
-
-      width: 425px;
-      height: 43px;
-      right: 0px;
-      top: 7px;
-
-      }
-      .category>a{
-        
-        width:30px;
-        
-        margin-left: 60px;
-        color: #FFFFFF;
-        
-      } */
+      
       #user_info{
         position: absolute;
         width: 10%;
@@ -103,7 +66,7 @@ position:relative;
 width: 250px;
 height: 600px;
 top: 130px;
-background: #B4EBCA;
+background: #379634;
 padding-left:50px;
 }
 .filter>h1{
@@ -176,7 +139,7 @@ height: 130px;
 left: 0px;
 bottom:0px;
 
-background: green;}
+background: #3E721D;}
 
 
 

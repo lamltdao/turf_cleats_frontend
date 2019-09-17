@@ -6,7 +6,7 @@ export default class Logo extends Component {
         return (
             <div className='Logo'>
                 {/* <a href='/'>SNEAKERS</a> */}
-                <NavbarBrand href="/">Sneakers</NavbarBrand>
+                <NavbarBrand href="/" id='Logo'>HOME</NavbarBrand>
             </div>
         )
     }

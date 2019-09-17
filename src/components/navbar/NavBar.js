@@ -28,7 +28,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="success" light expand="md" >
+        <Navbar className='nav_bar' light expand="md" >
           <Logo />
           <SearchField onKeyWordChange={this.props.onKeyWordChange} />
           <div id='user_info'>{this.props.userInfo.name}</div>
@@ -40,7 +40,7 @@ export default class NavBar extends Component {
               </NavItem>
 
               <NavItem>
-                <NavLink href="/help">Help</NavLink>
+                {/* <NavLink href="/help"></NavLink> */}
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>

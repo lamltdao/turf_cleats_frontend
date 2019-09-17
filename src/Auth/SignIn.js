@@ -65,7 +65,7 @@ export default class Auth extends Component {
 						<input type="password" className="form-control" placeholder="password" name="password" onChange={this.handleChange}/>
 					</div>
 					<div className="row align-items-center remember">
-						<input type="checkbox"/>Remember Me
+						{/* <input type="checkbox"/>Remember Me */}
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Login" className="btn float-right login_btn" />
@@ -76,9 +76,9 @@ export default class Auth extends Component {
 				<div className="d-flex justify-content-center links">
 					Don't have an account?<a href="/sign_up">Sign Up</a>
 				</div>
-				<div className="d-flex justify-content-center">
+				{/* <div className="d-flex justify-content-center">
 					<a href="#">Forgot your password?</a>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	</div>

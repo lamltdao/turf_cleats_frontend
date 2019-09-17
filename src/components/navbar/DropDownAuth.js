@@ -26,7 +26,7 @@ export default class DropDownAuth extends Component {
     logOut=(event)=>{
         event.preventDefault();
         window.localStorage.removeItem('access_token');
-        const cart=window.localStorage.getItem('cart');
+        var cart=window.localStorage.getItem('cart');
         cart=JSON.parse(cart);
         cart=[];
         window.localStorage.setItem('cart',JSON.stringify(cart));

@@ -45,7 +45,7 @@ export default class Cart extends Component {
                     </tbody>
                 </Table>
 
-                <form onSubmit={this.submitPackage}><Button type='submit' color='primary' id='submitPackage' >Submit</Button></form>
+                <form onSubmit={this.submitPackage}><Button type='submit' color='success' id='submitPackage' >Submit</Button></form>
             </div>
         )
     }
