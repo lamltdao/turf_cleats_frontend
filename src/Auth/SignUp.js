@@ -62,7 +62,7 @@ export default class SignUp extends Component {
                                         </div>
                                         <div className="form-group">
                                             {/* <input type="submit" value="Register" className="btn float-right login_btn" /> */}
-                                            <Button type='submit'>Register</Button>
+                                            <Button type='submit' color='warning'>Register</Button>
                                         </div>
                                     </form>
                                 </div>

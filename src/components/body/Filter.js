@@ -18,13 +18,13 @@ export default class Filter extends Component {
                     </div>
 
                     <br/>
-                    <div className='filter_by_prize'>
-                        <h5>Prize</h5>
-                        <Input type='checkbox' onChange={this.props.selectPrizeRange} value='500000-1500000'/>500.000-1.500.000
+                    <div className='filter_by_price'>
+                        <h5>Price</h5>
+                        <Input type='checkbox' onChange={this.props.selectPriceRange} value='500000-1500000'/>500.000-1.500.000
                         <p/>
-                        <Input type='checkbox' onChange={this.props.selectPrizeRange} value='1500000-3000000'/>1.500.000-3.000.000
+                        <Input type='checkbox' onChange={this.props.selectPriceRange} value='1500000-3000000'/>1.500.000-3.000.000
                         <p/>
-                        <Input type='checkbox' onChange={this.props.selectPrizeRange} value='3000000-9000000'/>>3.000.000
+                        <Input type='checkbox' onChange={this.props.selectPriceRange} value='3000000-9000000'/>>3.000.000
                     </div>
                 </div>
             </div>

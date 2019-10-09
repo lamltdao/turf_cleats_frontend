@@ -4,38 +4,40 @@ import axios from 'axios';
 import { base_url } from '../../config';
 export default class SneakersList extends Component {
   state = {
-    sneakerslist: [],
+    // sneakerslist: [],
     brandSelected:[],
-    prizeRangeSelected:[]
+    priceRangeSelected:[],
+    currentPage:null,
+    newsPerPage:6
   }
   componentWillMount() {
-    axios({
-      url: base_url + '/api/sneakers',
-      method: 'GET'
-    })
-      /**data contains arr of obj: {
-       * img
-       * name
-       * prize
-       * } */
-      .then(data => {
-        this.setState({sneakerslist:data.data});
-        console.log(this.state);
+    // axios({
+    //   url: base_url + '/api/sneakers',
+    //   method: 'GET'
+    // })
+    //   /**data contains arr of obj: {
+    //    * img
+    //    * name
+    //    * price
+    //    * } */
+    //   .then(data => {
+    //     this.setState({sneakerslist:data.data});
+    //     console.log(this.state);
         
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
   }
   renderSneakers=()=>{
     const {keyWordSearch } = this.props;
     const {brandSelected}=this.props;
-    const {prizeRangeSelected}=this.props;
-    
-    
+    const {priceRangeSelected}=this.props;
+    const {sneakersList}=this.props;
+    const {sneakersShownNumber}=this.props;
     let minPrice = 0;
     let maxPrice = 0;
-    prizeRangeSelected.forEach(item => {
+    priceRangeSelected.forEach(item => {
       let min = Number(item.split('-')[0]);
       let max = Number(item.split('-')[1]);
 
@@ -43,7 +45,8 @@ export default class SneakersList extends Component {
       if(maxPrice == 0 || maxPrice < max) maxPrice = max
 
     })
-    return this.state.sneakerslist
+    
+    return sneakersList
             .filter((item,index)=>{
               if(keyWordSearch) return item.name.toLowerCase().indexOf(keyWordSearch.toLowerCase()) > -1; 
               return true;
@@ -56,11 +59,15 @@ export default class SneakersList extends Component {
             }) 
             .filter((item,index)=>{
               if(minPrice!=0 && maxPrice!=0){
-                return item.prize >=Number(minPrice)&&item.prize<=Number(maxPrice);
+                return item.price >=Number(minPrice)&&item.price<=Number(maxPrice);
               }
               return true;
             })
+            .filter((item,index)=>{
+              return index<sneakersShownNumber
+            })
             .map((item, index) => {
+              
               return <Sneakers key={index} {...item} />//{...item}=object.asign(key,item) return a new obj 
             })
   }

@@ -9,22 +9,7 @@ export default class Sneakers extends Component {
         return (
             
             <div className='sneakers col-4'>
-                {/* <Link to={`/sneakers/` + this.props._id}>
-                        <Card className='sneakers' width top='100%'>
-                            <CardImg className='card_img'src='/assets/318x180.svg' alt="Card image cap" />
-                            <CardBody>
-                                <CardTitle className='sneakers_name'>{
-                                    this.props.name
-                                }</CardTitle>
-                                <CardSubtitle className='sneakers_prize'>{
-                                    this.props.prize
-                                }</CardSubtitle>
-                                <CardText>Some quick example text.</CardText>
-                                <Button>Button</Button>
-                            </CardBody>
-                        </Card>
-                    </Link> */}
-
+                
 
 
                 <Link to={`/sneakers/` + this.props._id}>
@@ -34,10 +19,11 @@ export default class Sneakers extends Component {
                             this.props.name
                         }
                     </div>
-                    <div className='sneakers_prize'>
+                    <div className='sneakers_price'>
                         {
-                            this.props.prize
-                        }
+                            this.props.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+                        } VND
                     </div>
                 </Link>
             </div>

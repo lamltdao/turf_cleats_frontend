@@ -6,7 +6,8 @@ import { base_url } from '../config';
 export default class Auth extends Component {
 	state={
 		username:'',
-		password:''
+		password:'',
+		error:''
 	}
 	login=(event)=>{
 		event.preventDefault();
@@ -20,13 +21,15 @@ export default class Auth extends Component {
 		})
 		.then(data=>{
 			console.log(data);
-			
 			window.localStorage.setItem('access_token',data.data.token);
+			window.localStorage.setItem('userId',data.data.id);
 			console.log('Successfully Login');
 			window.location.href='/';
 		})
 		.catch(err=>{
 			console.log(err);
+			if(err)this.setState({error:'Your username or password is incorrect'});
+			else this.setState({error:''})
 		})
 	}
 	handleChange=(event)=>{
@@ -71,6 +74,8 @@ export default class Auth extends Component {
 						<input type="submit" value="Login" className="btn float-right login_btn" />
 					</div>
 				</form>
+				
+				<div className='text-center text-danger'> {this.state.error}</div>
 			</div>
 			<div className="card-footer">
 				<div className="d-flex justify-content-center links">

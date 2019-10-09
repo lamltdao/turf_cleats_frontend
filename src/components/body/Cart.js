@@ -31,7 +31,7 @@ export default class Cart extends Component {
                             <th>Product's Name</th>
                             <th>Quantity</th>
                             <th>Size</th>
-                            <th>Price</th>
+                            <th>Price(VND)</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -45,7 +45,11 @@ export default class Cart extends Component {
                     </tbody>
                 </Table>
 
-                <form onSubmit={this.submitPackage}><Button type='submit' color='success' id='submitPackage' >Submit</Button></form>
+                <form onSubmit={this.submitPackage}>
+                    <Button type='submit' color='primary' id='submitPackage' >
+                        Submit
+                    </Button>
+                </form>
             </div>
         )
     }
@@ -70,10 +74,10 @@ export default class Cart extends Component {
     renderTotalPrice=(event)=>{
         var price=0;
         const totalPrice=this.state.cart.reduce((price,item)=>{
-            return price+Number(item.prize*item.quantity);
+            return price+Number(item.price*item.quantity);
         },0);
         price+=totalPrice;
-        return price;
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     renderSneakers = (event) => {
         return this.state.cart.map((item, index) => {
@@ -96,7 +100,7 @@ export default class Cart extends Component {
                   {item.size} 
                 </td>
                 <td>
-                    {item.prize* item.quantity}
+                    {Number(item.price* item.quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </td>
                 <td>
                     <Button color='danger'type='button' onClick={() => { this.removeFromCart(index) }}>

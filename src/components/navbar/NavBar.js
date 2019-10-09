@@ -31,12 +31,12 @@ export default class NavBar extends Component {
         <Navbar className='nav_bar' light expand="md" >
           <Logo />
           <SearchField onKeyWordChange={this.props.onKeyWordChange} />
-          <div id='user_info'>{this.props.userInfo.name}</div>
+          <div id='user_info' className='text-white'>{this.props.userInfo.name? 'Welcome, '+ this.props.userInfo.name: ''}</div>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
 
               <NavItem>
-                <NavLink href="/cart">Cart</NavLink>
+                <NavLink href="/cart" className='text-white'>Cart</NavLink>
               </NavItem>
 
               <NavItem>
@@ -44,7 +44,7 @@ export default class NavBar extends Component {
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret className='text-white'>
                   Account
                 </DropdownToggle>
                 
