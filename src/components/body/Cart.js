@@ -21,9 +21,11 @@ class Cart extends Component {
         var cart = window.localStorage.getItem('cart');
         cart = JSON.parse(cart);
 
-        cart.map((item, index) => {
-            this.state.cart.push(item);
-        })
+        if(cart.length>0){
+            cart.map((item, index) => {
+                this.state.cart.push(item);
+            })
+        }
         //this.setState({cart:cart})
 
 
