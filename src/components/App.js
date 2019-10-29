@@ -11,15 +11,6 @@ import Cart from './body/Cart';
 import SignUp from '../Auth/SignUp';
 import axios from 'axios';
 import { base_url } from '../config';
-import {Elements, StripeProvider} from 'react-stripe-elements';
-
-const CartWithStripe = () => (
-  <StripeProvider apiKey="pk_test_q58H7MWrSfERSzuacF1SmkP200AnDPO91e">
-    <Elements>
-      <Cart/>
-    </Elements>
-  </StripeProvider>
-)
 
 export default class App extends Component {
   state = {
@@ -55,7 +46,7 @@ export default class App extends Component {
             <Route path='/sign_in' component={SignIn} />
             <Route path='/sign_up' component={SignUp} />
             <Route path='/sneakers/:id' component={SneakersDetail} />
-            <Route path='/cart' component={CartWithStripe} />
+            <Route path='/cart' component={Cart} />
           </Switch>
         </BrowserRouter>
         <Footer />

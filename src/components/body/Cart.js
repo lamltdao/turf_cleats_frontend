@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Table, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { base_url } from '../../config';
 import { PayPalButton } from 'react-paypal-button-v2';
-import { CardElement, injectStripe } from 'react-stripe-elements';
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import 'react-stripe-elements/dist/react-stripe-elements'
+import CheckoutForm from './CheckoutForm';
 
 import '../../Cart.css';
 class Cart extends Component {
@@ -53,7 +53,7 @@ class Cart extends Component {
                     </tbody>
                 </Table>
 
-                <form onSubmit={this.submitPackage} >
+                {/* <form onSubmit={this.submitPackage} > */}
                     {/* <Button type='button' color='primary' id='submitPackage' onclick={this.submitPackage} >
                         Submit
                     </Button>
@@ -69,66 +69,26 @@ class Cart extends Component {
                             </Form>
                         </div>
                     </div>
-                    <div className='text-center'>
-                        {/* <PayPalButton
-                            amount={{
-                                currency_code: "VND",
-                                value: this.renderTotalPrice
-                            }}
-                            onSuccess={(details) => {
-                                alert("Transaction completed by " + details.payer.name.given_name);
-                                axios({
-                                    method: 'POST',
-                                    url: base_url + '/api/package',
-                                    data: {
-                                        address: this.state.address,
-                                        cart: this.state.cart,
-                                        totalPrice: this.props.amount.value
-                                    }
-                                })
-                                    .then(data => {
-                                        console.log(data);
-                                    })
-                                    .catch(err => {
-                                        console.log(err);
-
-                                    })
-                                console.log(details);
-                            }}
-                        /> */}
+                    <div className='col-6 offset-3'>
+                        
                         <div className="checkout">
-                            <p>Would you like to complete the purchase?</p>
-                            <CardElement />
-                            <button onClick={this.submit}>Purchase</button>
+                            {/* <p>Insert Your Card Number Below</p> */}
+
+                            <StripeProvider apiKey="pk_test_q58H7MWrSfERSzuacF1SmkP200AnDPO91e">
+                                <Elements>
+                                    <CheckoutForm
+                                        address={this.state.address}
+                                        cart={this.state.cart}
+                                        totalPrice={this.renderTotalPrice()}
+                                    />
+                                </Elements>
+                            </StripeProvider>
+                            {/* <button id='btn_purchase'onClick={this.submit}>Purchase</button> */}
                         </div>
                     </div>
-                </form>
+                {/* </form> */}
             </div>
         )
-    }
-
-    submit = async (ev) => {
-        ev.preventDefault();
-        let { token } = await this.props.stripe.createToken({ name: "Name" });
-        axios({
-            method: "POST",
-            url: base_url + '/charge',
-            data: {
-                source: token.id,
-                package: {
-                    address: this.state.address,
-                    cart: this.state.cart,
-                    totalPrice: this.renderTotalPrice()
-                }
-            }
-            })
-            .then(data => { console.log(data) })
-            .catch(err => {
-                console.log(err);
-            })
-
-        console.log(token);
-
     }
 
     onAddressChange = (event) => {
@@ -188,4 +148,4 @@ class Cart extends Component {
         this.setState({ cart: cart });
     }
 }
-export default injectStripe(Cart);
+export default Cart;
