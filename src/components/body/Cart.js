@@ -21,7 +21,7 @@ class Cart extends Component {
         var cart = window.localStorage.getItem('cart');
         cart = JSON.parse(cart);
 
-        if(cart.length>0){
+        if(cart!=null){
             cart.map((item, index) => {
                 this.state.cart.push(item);
             })
