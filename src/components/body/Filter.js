@@ -13,8 +13,8 @@ export default class Filter extends Component {
                         <p/>
                         <Input type='checkbox' onChange={this.props.selectBrand} value='Adidas'/>Adidas
                         <p/>
-                        <Input type='checkbox' onChange={this.props.selectBrand} value='Puma'/>Puma
-                        <p/>
+                        {/* <Input type='checkbox' onChange={this.props.selectBrand} value='Puma'/>Puma
+                        <p/> */}
                     </div>
                     <br/>
                     <div className='filter_by_price'>

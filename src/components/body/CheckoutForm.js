@@ -28,26 +28,26 @@ class CheckoutForm extends Component {
     }
 
     submit = async (ev) => {
-        ev.preventDefault();
-        let { token } = await this.props.stripe.createToken({ name: "Name" });
-        axios({
-            method: "POST",
-            url: base_url + '/charge',
-            data: {
-                source: token.id,
-                package: {
-                    address: this.props.address,
-                    cart: this.props.cart,
-                    totalPrice: this.props.totalPrice,
+        if(window.localStorage.getItem('userId')!=null){
+            ev.preventDefault();
+            let { token } = await this.props.stripe.createToken({ name: "Name" });
+            axios({
+                method: "POST",
+                url: base_url + '/charge',
+                data: {
+                    source: token.id,
+                    package: {
+                        address: this.props.address,
+                        cart: this.props.cart,
+                        totalPrice: this.props.totalPrice,
+                    }
                 }
-            }
-        })
-            .then(data => { console.log(data) })
-            .catch(err => {
-                console.log(err);
             })
-
-        console.log(token);
+                .then(data => { console.log(data) })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
     }
 
     render() {
