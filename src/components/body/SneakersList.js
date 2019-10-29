@@ -47,6 +47,9 @@ export default class SneakersList extends Component {
     })
     
     return sneakersList
+            .sort((item1,item2)=>{
+              return item2.price-item1.price;
+            })
             .filter((item,index)=>{
               if(keyWordSearch) return item.name.toLowerCase().indexOf(keyWordSearch.toLowerCase()) > -1; 
               return true;

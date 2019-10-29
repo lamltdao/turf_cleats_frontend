@@ -44,7 +44,7 @@ export default class Auth extends Component {
                 <div className="container">
 	<div className="d-flex justify-content-center h-100">
 		<div className="card">
-			<div className="card-header">
+			<div className="card-header ">
 				<h3>Sign In</h3>
 				<div className="d-flex justify-content-end social_icon">
 					<span><i className="fab fa-facebook-square"></i></span>
@@ -52,7 +52,7 @@ export default class Auth extends Component {
 					<span><i className="fab fa-twitter-square"></i></span>
 				</div>
 			</div>
-			<div className="card-body">
+			<div className="card-body ">
 				<form onSubmit={this.login}>
 					<div className="input-group form-group">
 						<div className="input-group-prepend">
@@ -75,9 +75,9 @@ export default class Auth extends Component {
 					</div>
 				</form>
 				
-				<div className='text-center text-danger'> {this.state.error}</div>
+				<div className='text-center text-warning'> {this.state.error}</div>
 			</div>
-			<div className="card-footer">
+			<div className="card-footer ">
 				<div className="d-flex justify-content-center links">
 					Don't have an account?<a href="/sign_up">Sign Up</a>
 				</div>

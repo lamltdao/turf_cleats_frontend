@@ -16,7 +16,6 @@ export default class Filter extends Component {
                         <Input type='checkbox' onChange={this.props.selectBrand} value='Puma'/>Puma
                         <p/>
                     </div>
-
                     <br/>
                     <div className='filter_by_price'>
                         <h5>Price</h5>
@@ -26,6 +25,15 @@ export default class Filter extends Component {
                         <p/>
                         <Input type='checkbox' onChange={this.props.selectPriceRange} value='3000000-9000000'/>>3.000.000
                     </div>
+                    <br/>
+                    {/* <div className='sort_by_price'>
+                        <h5>Sort by price</h5>
+                        <Input type='checkbox' onChange={this.props.selectPriceRange} value=''/>Ascending
+                        <p/>
+                        <Input type='checkbox' onChange={this.props.selectPriceRange} value='1500000-3000000'/>Descending
+                        <p/>
+                      
+                    </div> */}
                 </div>
             </div>
         )

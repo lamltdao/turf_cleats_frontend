@@ -1,6 +1,6 @@
 body{
-  /* background:#8EB897; */
-  background: #DBF1FF
+  /* background:#355664; */
+  /* background: #DBF1FF */
 }
 .main{
   min-height: 100vh;
@@ -46,17 +46,7 @@ body{
         border-bottom: 4px solid black;
       }
 /**/
-.banner{
-position: relative;
 
-width: 100%;
-height: 220px;
-top: 1px;
-border: 1px solid #000000;
-backdrop-filter: blur(4px);
-/* Note: backdrop-filter has minimal browser support */
-border-radius: 1px;
-}
   .banner>img{
     width:100%;
     max-height: 100%;
@@ -125,10 +115,14 @@ padding-left:50px;
           bottom: 0%;
         }
             
+.card-header,.card-body,.card-footer{
+  background-color: #3F6D84;
+}
+
 .footer{
-margin-top:50%;
+margin-top:10%;
 width:100%;
-height: 130px;
+/* height: 130px; */
 left: 0px;
 bottom:0px;
 

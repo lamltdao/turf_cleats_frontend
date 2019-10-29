@@ -26,11 +26,12 @@ export default class DropDownAuth extends Component {
     logOut=(event)=>{
         event.preventDefault();
         window.localStorage.removeItem('access_token');
+        window.localStorage.removeItem('userId');
         var cart=window.localStorage.getItem('cart');
         cart=JSON.parse(cart);
         cart=[];
         window.localStorage.setItem('cart',JSON.stringify(cart));
         window.location.href='/sign_in';
-        
+      
     }
 }

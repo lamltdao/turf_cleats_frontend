@@ -5,8 +5,10 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import { Form, FormGroup, Label, FormText } from 'reactstrap';
 import axios from 'axios';
 import { base_url } from '../../config';
+import {withRouter} from 'react-router-dom';
 import moment from 'moment';
-export default class SneakersDetail extends Component {
+import  Banner from './Banner';
+class SneakersDetail extends Component {
     state = {
         //sneaker
         name: null,
@@ -16,13 +18,15 @@ export default class SneakersDetail extends Component {
         sneakersId: null,
         size: null,
         //modal+dropDown
-        modal: false,
+        modalAddToCart: false,
         dropdownOpen: false,
         dropDownValue: 'Choose Size',
         //comment
         userId: null,
         content: null,
-        commentList: []
+        commentList: [],
+        modalComment:false,
+        commentNumberShown:5
     }
     componentWillMount() {
         var userId = window.localStorage.getItem('userId');
@@ -45,19 +49,8 @@ export default class SneakersDetail extends Component {
                 console.log(err);
             });
 
-        axios({
-            method: 'GET',
-            url: base_url + '/api/sneakers/' + sneakersId + '/comment',
-        })
-            .then(data => {
-                this.setState({ commentList: data.data.comment.reverse() });
-               // console.log(this.state.commentList);
-                
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
+        
+        this.setState({commentNumberShown:5})
     }
 
     render() {
@@ -75,11 +68,11 @@ export default class SneakersDetail extends Component {
                         <div className='sneakers_quantity_detail row'>
                             <div class="col-8">
                                 <p>
-                                    How many pairs do you want to buy ?
+                                    Pairs
                                 </p>
                             </div>
                             <div class="col-4">
-                                <Input type="number" onChange={this.quantityChange} step={1} min={0} placeholder='' />
+                                <Input type="number" onChange={this.quantityChange} step={1} min={0} placeholder='0' />
                             </div>
                         </div>
                         <div className='sneakers_size_detail row'>
@@ -102,13 +95,18 @@ export default class SneakersDetail extends Component {
                                 </Dropdown>
                             </div>
                         </div>
+                        
                         <div className="center">
-                            <Button id='btn_add_to_cart' type='button' onClick={this.addToCartAndDisplayMessage}>Add to cart</Button>
-                            <Modal toggle={this.ModalToggle} isOpen={this.state.modal}>
-                                <ModalHeader toggle={this.ModalToggle}></ModalHeader>
+                            <Button id='btn_add_to_cart' 
+                                    type='button' 
+                                    onClick={this.addToCartAndDisplayMessage}>
+                                        Add to cart
+                            </Button>
+                            <Modal toggle={this.ModalAddToCartToggle} isOpen={this.state.modalAddToCart}>
+                                <ModalHeader toggle={this.ModalAddToCartToggle}></ModalHeader>
                                 <ModalBody>{this.state.quantity <= 0 ? "Please fill in the quantity" : (typeof (this.state.dropDownValue) == "string" ? "Please Choose Your Size" : 'This product has been added to your cart')}</ModalBody>
                                 <ModalFooter>
-                                    <Button color='primary' type='button' onClick={this.ModalToggle}>OK</Button>
+                                    <Button color='primary' type='button' onClick={this.ModalAddToCartToggle}>OK</Button>
                                 </ModalFooter>
                             </Modal>
                         </div>
@@ -118,8 +116,6 @@ export default class SneakersDetail extends Component {
 
                 {/* Comment */}
                 <div className='comments container'>
-                    
-                    
                     <div className='row'>
                         <div className='comment_text_area col-12'>
                             <Form onSubmit={this.submitComment}>
@@ -127,52 +123,97 @@ export default class SneakersDetail extends Component {
                                     <Label for="exampleText">Write Your Comment Here</Label>
                                     <Input type="textarea" name="text" id="exampleText" onChange={this.commentChange} />
                                 </FormGroup>
-                                <Button type='submit' >Submit</Button>
+                                <Button type='submit'>Submit</Button>
+                                    <Modal toggle={this.ModalCommentToggle} isOpen={this.state.modalComment}>
+                                    <ModalHeader toggle={this.ModalCommentToggle}></ModalHeader>
+                                    <ModalBody>
+                                        Please sign in to comment
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button onClick={this.toSignInPage} color='primary'>Sign in</Button>
+                                        <Button color='primary' type='button' onClick={this.ModalCommentToggle}>OK</Button>
+                                    </ModalFooter>
+                            </Modal>
                             </Form>
                         </div>
                     </div>
                     <hr/>
                     <div className='row'>
                         <div className='commentList col-12'>
-                            {       this.state.commentList
-                                    .filter((item, index) => {
-                                        return index < 5;
-                                    })
-                                    .map((item, index) => {
-                                        return <div className='user_comment row '>
-                                            <div className='col-3'>{item.user.username}</div>
-                                            <div className='col-4'>{item.content}</div>
-                                            <div className='col-4'>{moment(item.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</div>
-                                        </div>
-                                    })
-                                    
+                            {     
+                                 this.state.commentList
+                                 .filter((item, index) => {
+                                     return index < this.state.commentNumberShown;
+                                 })
+                                 .map((item, index) => {
+                                     return <div className='user_comment row '>
+                                         <div className='col-3'>{item.user.username}</div>
+                                         <div className='col-4'>{item.content}</div>
+                                         <div className='col-4'>{moment(item.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</div>
+                                     </div>
+                                 })  
                             }
                         </div>
+                    </div>
+                    <hr/>
+                    <div className='row'>
+                            <div className='col-5'></div>
+                            <Button className=' btn_view_more_comment col-2'type='button' onClick={this.viewMoreComment} color='primary'>View more</Button>  
+                            <div className='col-5   '></div>
                     </div>
                 </div>
             </div>
         )
     }
 
-   
-    submitComment = (event) => {
-        console.log({user: this.state.userId,
-            content: this.state.content});
-        
+    getCommentList=(event)=>{
+        //get list
         axios({
+            method: 'GET',
             url: base_url + '/api/sneakers/' + this.state.sneakersId + '/comment',
-            method: 'POST',
-            data: {
-                user: this.state.userId,
-                content: this.state.content
-            },
         })
             .then(data => {
-                console.log(data);
+                this.setState({ commentList: data.data.comment.reverse() });
             })
             .catch(err => {
                 console.log(err);
             })
+        //show comments
+         
+    }
+
+    viewMoreComment=(event)=>{
+        this.setState({commentNumberShown:this.state.commentNumberShown+5})
+    }
+
+    toSignInPage=(event)=>{
+        let path=`/sign_in`;
+        this.props.history.push(path);
+    }
+   
+    submitComment = (event) => {
+        event.preventDefault();
+        if(this.state.userId!=null){
+            axios({
+                url: base_url + '/api/sneakers/' + this.state.sneakersId + '/comment',
+                method: 'POST',
+                data: {
+                    user: this.state.userId,
+                    content: this.state.content
+                },
+            })
+                .then(data => {
+                    console.log(data);
+                    this.getCommentList();
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+        else{
+            this.setState({modalComment:!this.state.modalComment})
+        }
+        
     }
     commentChange = (event) => {
         const content = event.target.value;
@@ -197,13 +238,16 @@ export default class SneakersDetail extends Component {
     DropDownToggle = () => {
         this.setState({ dropdownOpen: !this.state.dropdownOpen })
     }
-    ModalToggle = () => {
-        this.setState({ modal: !this.state.modal });
+    ModalAddToCartToggle = () => {
+        this.setState({ modalAddToCart: !this.state.modalAddToCart });
+    }
+    ModalCommentToggle= ()=>{
+        this.setState({modalComment:!this.state.modalComment})
     }
 
     addToCartAndDisplayMessage = (event) => {
         //display message
-        this.setState({ modal: !this.state.modal });
+        this.setState({ modalAddToCart: !this.state.modalAddToCart });
         //add to cart
         if (this.state.quantity > 0 && this.state.size) {
             if (window.localStorage.getItem('cart')) {
@@ -245,3 +289,4 @@ export default class SneakersDetail extends Component {
         }
     }
 }
+export default withRouter(SneakersDetail)

@@ -1,7 +1,7 @@
 .sneakers_detail{
     
     width:80%;
-    height:400px;
+    /* height:400px; */
     top:200px;
     left:10%;
     
@@ -47,6 +47,7 @@
         bottom:0px;
         width:100%;
     }
+    
     .center{
         margin-top: 30%;    
         text-align: center;
@@ -78,5 +79,8 @@
         
         margin-bottom:10px; 
         
+    }
+    .btn_view_more_comment{
+        height:50px;    
     }
     

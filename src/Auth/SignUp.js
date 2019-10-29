@@ -10,7 +10,7 @@ export default class SignUp extends Component {
         name: null,
         phone_number: null,
         enum: 'member',
-        messageInSignUp:''
+        messageInSignUp: ''
     }
     render() {
         return (
@@ -70,6 +70,9 @@ export default class SignUp extends Component {
                                     <div className="d-flex justify-content-center" color='warning' >
                                         {this.state.messageInSignUp}
                                     </div>
+                                    <div className="d-flex justify-content-center links">
+                                        <p className='text-warning'>Already have an account ?</p><a href="/sign_in">Sign In</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -87,16 +90,16 @@ export default class SignUp extends Component {
             data: this.state
         })
             .then(data => {
-                this.setState({messageInSignUp:'Register successful'})
+                this.setState({ messageInSignUp: 'Register successful' })
 
             })
             .catch(err => {
-               this.setState({messageInSignUp:'Register failed'})
+                this.setState({ messageInSignUp: 'Register failed' })
             })
     }
     handleChange = (event) => {
         this.setState({
-             [event.target.name]: event.target.value 
+            [event.target.name]: event.target.value
         })
     }
 
