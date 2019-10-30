@@ -35,6 +35,7 @@ export default class SneakersList extends Component {
     const {priceRangeSelected}=this.props;
     const {sneakersList}=this.props;
     const {sneakersShownNumber}=this.props;
+    const {isSortedAscending}=this.props;
     let minPrice = 0;
     let maxPrice = 0;
     priceRangeSelected.forEach(item => {
@@ -48,7 +49,8 @@ export default class SneakersList extends Component {
     
     return sneakersList
             .sort((item1,item2)=>{
-              return item2.price-item1.price;
+              return (item2.price-item1.price)
+                      // * isSortedAscending? 1: -1 ;
             })
             .filter((item,index)=>{
               if(keyWordSearch) return item.name.toLowerCase().indexOf(keyWordSearch.toLowerCase()) > -1; 

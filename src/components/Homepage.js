@@ -10,6 +10,7 @@ export default class Homepage extends Component {
     state = {
         brandSelected: [],
         priceRangeSelected: [],
+        isSortedAscending: false,
         sneakersList: [],
         currentPage: 1,
         sneakersShownNumber: 6
@@ -41,10 +42,18 @@ export default class Homepage extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
-                            <Filter selectBrand={this.selectBrand} selectPriceRange={this.selectPriceRange} />
+                            <Filter 
+                            selectBrand={this.selectBrand} 
+                            selectPriceRange={this.selectPriceRange} 
+                            selectSortType={this.selectSortType} />
                         </div>
                         <div className="col-9">
-                            <SneakersList sneakersShownNumber={this.state.sneakersShownNumber} sneakersList={this.state.sneakersList} keyWordSearch={this.props.keyWordSearch} brandSelected={this.state.brandSelected} priceRangeSelected={this.state.priceRangeSelected} />
+                            <SneakersList sneakersShownNumber={this.state.sneakersShownNumber} 
+                            sneakersList={this.state.sneakersList} 
+                            keyWordSearch={this.props.keyWordSearch}
+                            brandSelected={this.state.brandSelected} 
+                            priceRangeSelected={this.state.priceRangeSelected}
+                            isSortedAscending={this.state.isSortedAscending} />
                         </div>
                     </div>
 
@@ -56,10 +65,13 @@ export default class Homepage extends Component {
                         <div className='row col-9'>
                             <div className='col-5'>
                                 </div>
-                            <Button className='col-2' type='button' onClick={this.viewMoreSneakers} color='primary' >View More</Button>
+                            <Button className='col-2'
+                                type='button'
+                                onClick={this.viewMoreSneakers}
+                                color='primary' >View More</Button>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div className='row'>
                         <div className='col-3'>
 
@@ -67,7 +79,10 @@ export default class Homepage extends Component {
                         <div className='row col-9'>
                             <div className='col-5'>
                                 </div>
-                            <Button className='col-2' type='button' onClick={this.viewLessSneakers} color='danger' >View Less</Button>
+                            <Button className='col-2'
+                                type='button'
+                                onClick={this.viewLessSneakers}
+                                color='danger' >View Less</Button>
                         </div>
                     </div>
 
@@ -78,15 +93,15 @@ export default class Homepage extends Component {
 
     viewMoreSneakers = (event) => {
         const sneakersAddedPerClick = 6;
-        if(this.state.sneakersShownNumber<this.state.sneakersList.length)
-        this.setState({ sneakersShownNumber: this.state.sneakersShownNumber + sneakersAddedPerClick })
+        if (this.state.sneakersShownNumber < this.state.sneakersList.length)
+            this.setState({ sneakersShownNumber: this.state.sneakersShownNumber + sneakersAddedPerClick })
     }
-    viewLessSneakers= (event)=>{
+    viewLessSneakers = (event) => {
         const sneakersRemovedPerClick = 6;
-        if(this.state.sneakersShownNumber>6){
+        if (this.state.sneakersShownNumber > 6) {
             this.setState({ sneakersShownNumber: this.state.sneakersShownNumber - sneakersRemovedPerClick })
         }
-       
+
     }
 
     // renderPaginationNumbers = (event) => {
@@ -102,8 +117,14 @@ export default class Homepage extends Component {
     //         </PaginationItem>
     //     })
     // }
+
+    selectSortType = (event) => {
+        this.setState({ sneakersShownNumber: 6 });
+        if (event.target.value === 'ascending') this.setState({ isSortedAscending: true })
+        else this.setState({ isSortedAscending: false })
+    }
     selectBrand = (event) => {
-        this.setState({sneakersShownNumber:6});
+        this.setState({ sneakersShownNumber: 6 });
         let { brandSelected } = this.state;
         if (!brandSelected.includes(event.target.value)) {
             brandSelected.push(event.target.value);
@@ -117,7 +138,7 @@ export default class Homepage extends Component {
         }
     }
     selectPriceRange = (event) => {
-        this.setState({sneakersShownNumber:6});
+        this.setState({ sneakersShownNumber: 6 });
         let { priceRangeSelected } = this.state;
         if (event.target.checked) {
             priceRangeSelected.push(event.target.value);

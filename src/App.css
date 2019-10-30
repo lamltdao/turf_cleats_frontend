@@ -54,7 +54,7 @@ body{
 
 .filter{
 position: relative;
-width: 250px;
+/* width: 250px; */
 height: 600px;
 top: 130px;
 /* background: #379634; */
@@ -63,7 +63,7 @@ padding-left:50px;
 }
 .filter>h1{
   position:absolute;
-  font-size:30px;
+  font-size:60px;
   text-align: center;
 }
 .filter>#sort_list{
