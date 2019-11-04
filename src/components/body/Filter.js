@@ -5,7 +5,9 @@ export default class Filter extends Component {
     render() {
         return (
             <div className='filter col-12'>
-                <h1>Filter</h1>
+                <h1 
+                style={{fontFamily: "'Open Sans', sans-serif"}}
+                >Filter</h1>
                 <div id='sort_list'>
                     <div className='filter_by_brand'>
                         <h5>Brand</h5>

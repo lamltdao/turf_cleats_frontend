@@ -48,15 +48,26 @@ class SneakersDetail extends Component {
             .catch(err => {
                 console.log(err);
             });
-
-        
+            
+            console.log(sneakersId);
+            
+            axios({
+                method: 'GET',
+                url: base_url + '/api/sneakers/' + sneakersId + '/comment',
+            })
+                .then(data => {
+                    this.setState({ commentList: data.data.comment.reverse() });
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         this.setState({commentNumberShown:5})
     }
 
     render() {
         return (
             <div className='sneakers_detail container'>
-                <div className="row">
+                <div className="row image_and_description">
                     <div className='sneakers_img_detail col-6'>
                         <img src={this.state.image}
                             style={{ width: "100%" }} />
@@ -147,9 +158,9 @@ class SneakersDetail extends Component {
                                  })
                                  .map((item, index) => {
                                      return <div className='user_comment row '>
-                                         <div className='col-3'>{item.user.username}</div>
-                                         <div className='col-4'>{item.content}</div>
-                                         <div className='col-4'>{moment(item.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</div>
+                                         <div className='col-2 comment_user_name'>{item.user.username}</div>
+                                         <div className='col-7 comment_content'>{item.content}</div>
+                                         <div className='col-3 comment_date'>{moment(item.createdAt).format('lll')}</div>
                                      </div>
                                  })  
                             }
@@ -158,7 +169,11 @@ class SneakersDetail extends Component {
                     <hr/>
                     <div className='row'>
                             <div className='col-5'></div>
-                            <Button className=' btn_view_more_comment col-2'type='button' onClick={this.viewMoreComment} color='primary'>View more</Button>  
+                            <Button className=' btn_view_comment col-2'type='button' onClick={this.viewMoreComment} color='primary'>View more</Button>  
+                            <div className='col-5   '></div>
+
+                            <div className='col-5'></div>
+                            <Button className=' btn_view_comment col-2'type='button' onClick={this.viewLessComment} color='danger'>View less</Button>  
                             <div className='col-5   '></div>
                     </div>
                 </div>
@@ -182,6 +197,9 @@ class SneakersDetail extends Component {
          
     }
 
+    viewLessComment=(event)=>{
+        this.setState({commentNumberShown:this.state.commentNumberShown-5})
+    }
     viewMoreComment=(event)=>{
         this.setState({commentNumberShown:this.state.commentNumberShown+5})
     }
