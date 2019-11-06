@@ -25,7 +25,7 @@ export default class Filter extends Component {
                         <p/>
                         <Input type='checkbox' onChange={this.props.selectPriceRange} value='1500000-3000000'/>1.500.000-3.000.000
                         <p/>
-                        <Input type='checkbox' onChange={this.props.selectPriceRange} value='3000000-9000000'/>>3.000.000
+                        <Input type='checkbox' onChange={this.props.selectPriceRange} value='3000000-9000000'/>More or equal to 3.000.000
                     </div>
                     <br/>
                     {/* <div className='sort_by_price'>
