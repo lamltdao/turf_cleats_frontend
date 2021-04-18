@@ -5,6 +5,7 @@ import { Elements, StripeProvider } from "react-stripe-elements";
 import "react-stripe-elements/dist/react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
 import "../../stylesheets/Cart.css";
+import { STRIPE_APIKEY } from '../../config';
 
 class Cart extends Component {
   state = {
@@ -14,13 +15,17 @@ class Cart extends Component {
   };
 
   componentDidMount() {
-    const cart = JSON.parse(window.localStorage.getItem("cart"));
+    const cart = window.localStorage.getItem("cart");
+    let update_cart = [];
     if (cart) {
-      cart.map((item) => {
-        this.state.cart.push(item);
+      const parseCart = JSON.parse(cart);
+      parseCart.map((item) => {
+        return update_cart.push(item);
       });
+      this.setState({cart: update_cart});
     }
   }
+
   render() {
     return (
       <div className="cart_detail">
@@ -37,15 +42,17 @@ class Cart extends Component {
           </thead>
           <tbody>
             {this.renderSneakers()}
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>Total:</th>
-            <th>
-              {this.renderTotalPrice()
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </th>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>Total:</th>
+              <th>
+                {this.renderTotalPrice()
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </th>
+            </tr>
           </tbody>
         </Table>
 
@@ -67,7 +74,7 @@ class Cart extends Component {
         </div>
         <div className="col-6 offset-3">
           <div className="checkout">
-            <StripeProvider apiKey="pk_test_q58H7MWrSfERSzuacF1SmkP200AnDPO91e">
+            <StripeProvider apiKey={STRIPE_APIKEY}>
               <Elements>
                 <CheckoutForm
                   address={this.state.address}
@@ -104,7 +111,7 @@ class Cart extends Component {
       });
       return (
         <tr>
-          <td scope="row">{index + 1}</td>
+          <td>{index + 1}</td>
           <td>
             <Link to={`/sneakers/` + item.sneakersId}>{item.name}</Link>
           </td>

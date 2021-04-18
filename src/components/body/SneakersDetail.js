@@ -79,7 +79,7 @@ class SneakersDetail extends Component {
       <div className="sneakers_detail container">
         <div className="row image_and_description">
           <div className="sneakers_img_detail col-6">
-            <img src={this.state.image} style={{ width: "100%" }} />
+            <img src={this.state.image} alt="" style={{ width: "100%" }} />
           </div>
           <div className="description col-6">
             <div className="sneakers_name_detail">{this.state.name}</div>
@@ -92,7 +92,7 @@ class SneakersDetail extends Component {
             </div>
 
             <div className="sneakers_quantity_detail row">
-              <div class="col-8">
+              <div className="col-8">
                 <p>Pairs</p>
               </div>
               <div class="col-4">
@@ -363,16 +363,16 @@ class SneakersDetail extends Component {
       } else {
         const initiate_cart = [];
         window.localStorage.setItem("cart", JSON.stringify(initiate_cart));
-        var cart = window.localStorage.getItem("cart");
-        cart = JSON.parse(cart);
-        cart.push({
+        const cart = window.localStorage.getItem("cart");
+        const parseCart = JSON.parse(cart);
+        parseCart.push({
           sneakersId: this.state.sneakersId,
           quantity: this.state.quantity,
           name: this.state.name,
           price: this.state.price,
           size: this.state.size,
         });
-        window.localStorage.setItem("cart", JSON.stringify(cart));
+        window.localStorage.setItem("cart", JSON.stringify(parseCart));
       }
     }
   };

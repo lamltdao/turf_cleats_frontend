@@ -3,7 +3,7 @@ import axios from "axios";
 import { base_url } from "../../config";
 import { CardElement, injectStripe } from "react-stripe-elements";
 
-const createOptions = () => {
+const cardStyles = () => {
   return {
     style: {
       base: {
@@ -23,10 +23,6 @@ const createOptions = () => {
 };
 
 class CheckoutForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   submit = async (e) => {
     if (window.localStorage.getItem("userId")) {
       e.preventDefault();
@@ -55,11 +51,11 @@ class CheckoutForm extends Component {
       <div className="CardDemo">
         <form onSubmit={this.submit}>
           <label>Card details</label>
-          <CardElement onChange={this.handleChange} {...createOptions()} />
+          <CardElement onChange={this.handleChange} {...cardStyles()} />
           <div className="error" role="alert">
           </div>
           <div className="text-center">
-            <button>Pay</button>
+            <button disabled>Pay</button>
           </div>
         </form>
       </div>

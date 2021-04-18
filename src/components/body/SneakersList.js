@@ -22,8 +22,8 @@ export default class SneakersList extends Component {
       let min = Number(item.split("-")[0]);
       let max = Number(item.split("-")[1]);
 
-      if (minPrice == 0 || minPrice > min) minPrice = min;
-      if (maxPrice == 0 || maxPrice < max) maxPrice = max;
+      if (minPrice === 0 || minPrice > min) minPrice = min;
+      if (maxPrice === 0 || maxPrice < max) maxPrice = max;
     });
 
     return sneakersList
@@ -44,7 +44,7 @@ export default class SneakersList extends Component {
         return true;
       })
       .filter((item) => {
-        if (minPrice != 0 && maxPrice != 0) {
+        if (minPrice !== 0 && maxPrice !== 0) {
           return (
             item.price >= Number(minPrice) && item.price <= Number(maxPrice)
           );

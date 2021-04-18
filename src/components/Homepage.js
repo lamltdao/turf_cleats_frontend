@@ -21,7 +21,6 @@ export default class Homepage extends Component {
     })
       .then((data) => {
         this.setState({ sneakersList: data.data });
-        console.log(this.state);
       })
       .catch((err) => {
         console.log(err);
@@ -30,6 +29,8 @@ export default class Homepage extends Component {
   render() {
     return (
       <div className="homepage">
+        {this.state.sneakersList.length > 0 
+        ?
         <div className="container">
           <div className="row">
             <div className="col-3">
@@ -82,6 +83,13 @@ export default class Homepage extends Component {
             </div>
           </div>
         </div>
+        : 
+        <div className="container">
+          <div className="row justify-content-center">
+            <h5>LOADING...</h5>
+          </div>
+        </div>
+        }
       </div>
     );
   }
@@ -118,7 +126,7 @@ export default class Homepage extends Component {
       this.setState({ brandSelected });
     } else {
       brandSelected = brandSelected.filter((item, index) => {
-        return item != event.target.value;
+        return item !== event.target.value;
       });
       this.setState({ brandSelected });
     }
@@ -131,7 +139,7 @@ export default class Homepage extends Component {
       this.setState({ priceRangeSelected });
     } else {
       priceRangeSelected = priceRangeSelected.filter((item, index) => {
-        return item != event.target.value;
+        return item !== event.target.value;
       });
       this.setState({ priceRangeSelected });
     }
