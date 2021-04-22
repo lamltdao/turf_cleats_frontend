@@ -28,11 +28,13 @@ export default class NavBar extends Component {
         <Navbar className="nav_bar" light expand="md">
           <Logo />
           <SearchField onKeyWordChange={this.props.onKeyWordChange} />
-          <div id="user_info" className="text-white">
-            {this.props.userInfo.name
-              ? "Welcome, " + this.props.userInfo.name
-              : ""}
-          </div>
+            {this.props.userInfo.name !== ""
+              && (
+                <div id="user_info" className="text-white">
+                  Welcome, {this.props.userInfo.name}
+                </div>
+              )
+            }
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>

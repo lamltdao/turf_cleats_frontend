@@ -34,17 +34,13 @@ class SneakersDetail extends Component {
     dropdownOpen: false,
     dropDownValue: "Choose Size",
     //comment
-    userId: null,
-    content: null,
+    content: "",
     commentList: [],
     modalComment: false,
     commentNumberShown: 5,
   };
 
   componentDidMount() {
-    let userId = window.localStorage.getItem("userId");
-    this.setState({ userId: userId });
-
     const sneakersId = this.props.match.params.id;
     axios({
       url: base_url + "/api/sneakers/" + sneakersId,
@@ -285,12 +281,16 @@ class SneakersDetail extends Component {
 
   submitComment = (event) => {
     event.preventDefault();
-    if (this.state.userId) {
+    if(this.state.content === "") return;
+    const access_token = window.localStorage.getItem('access_token');
+    if (access_token) {
       axios({
-        url: base_url + "/api/sneakers/" + this.state.sneakersId + "/comment",
+        url: `${base_url}/api/sneakers/${this.state.sneakersId}/comment`,
         method: "POST",
+        headers: {
+          'Authorization': `Bearer ${access_token}`
+        },
         data: {
-          user: this.state.userId,
           content: this.state.content,
         },
       })
@@ -305,7 +305,7 @@ class SneakersDetail extends Component {
   commentChange = (event) => {
     const content = event.target.value;
     this.setState({
-      content: content,
+      content,
     });
   };
 

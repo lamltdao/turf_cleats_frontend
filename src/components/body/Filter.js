@@ -1,7 +1,29 @@
 import React, { Component } from "react";
 import { Input } from "reactstrap";
+import axios from 'axios';
+import { base_url } from '../../config';
 
 export default class Filter extends Component {
+  state = {
+    brands: [],
+    priceRanges: ["500000-1500000","1500000-3000000","3000000-9000000"]
+  }
+  componentDidMount() {
+    axios({
+      url: base_url + "/api/brand/",
+      method: "GET",
+    })
+      .then((res) => {
+        this.setState({
+          brands: res.data,
+        });
+      })
+      .catch((err) => {
+
+      });
+
+  }
+  
   render() {
     return (
       <div className="filter col-12">
@@ -9,44 +31,31 @@ export default class Filter extends Component {
         <div id="sort_list">
           <div className="filter_by_brand">
             <h5>Brand</h5>
-            <Input
-              type="checkbox"
-              onChange={this.props.selectBrand}
-              value="Nike"
-            />
-            Nike
-            <p />
-            <Input
-              type="checkbox"
-              onChange={this.props.selectBrand}
-              value="Adidas"
-            />
-            Adidas
-            <p />
+            {this.state.brands.map((brand) => (
+              <div key={brand.id}>
+                <Input
+                type="checkbox"
+                onChange={this.props.selectBrand}
+                value={brand.name}
+                />
+                {brand.name}
+                <p />
+              </div>
+            ))}
           </div>
-          <br />
           <div className="filter_by_price">
             <h5>Price</h5>
-            <Input
+            {this.state.priceRanges.map((priceRange) => (
+            <div key={priceRange}>
+              <Input
               type="checkbox"
               onChange={this.props.selectPriceRange}
-              value="500000-1500000"
-            />
-            500.000-1.500.000
-            <p />
-            <Input
-              type="checkbox"
-              onChange={this.props.selectPriceRange}
-              value="1500000-3000000"
-            />
-            1.500.000-3.000.000
-            <p />
-            <Input
-              type="checkbox"
-              onChange={this.props.selectPriceRange}
-              value="3000000-9000000"
-            />
-            More or equal to 3.000.000
+              value={priceRange}
+              />
+              {priceRange} VND
+              <p />
+            </div>
+            ))}
           </div>
           <br />
         </div>

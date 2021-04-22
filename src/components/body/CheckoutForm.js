@@ -24,12 +24,12 @@ const cardStyles = () => {
 
 class CheckoutForm extends Component {
   submit = async (e) => {
-    if (window.localStorage.getItem("userId")) {
+    if (window.localStorage.getItem("access_token")) {
       e.preventDefault();
       let { token } = await this.props.stripe.createToken({ name: "Name" });
       axios({
         method: "POST",
-        url: base_url + "/charge",
+        url: `${base_url}/package/charge`,
         data: {
           source: token.id,
           package: {

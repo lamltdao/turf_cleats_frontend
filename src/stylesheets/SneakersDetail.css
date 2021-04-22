@@ -1,101 +1,78 @@
-.sneakers_detail{
-    
-    width:80%;
-    /* height:400px; */
-    top:200px;
-    left:10%;
-    
+.sneakers_detail {
+  width: 80%;
+  top: 200px;
+  left: 10%;
 }
-    .image_and_description{
-        
-    }
-        .sneakers_img_detail{
-            margin-top: 100px;
-            width:30%;
-            height:100%;
-            
-            
-        }
-        .description{
-            margin-top: 100px;
-            border:solid;
-            
-            right:0px;
-            width:50%;
-            background:#FFFFFF;
-        }
-            .sneakers_name_detail{
-                margin-top: 20px;
-                text-align: center;
-                width:100%;
-                height:20%;
-                bottom:13%;
-            }
 
-            .sneakers_quantity_detail,.sneakers_size_detail{
-                width:100%;
-                margin-bottom:20px;
-                
-            }
-            .sneakers_price_detail{
-                
-                text-align: center;
-                font-size: 150%;
-                width:100%;
-                height:10%;
-                bottom: 10%;
-            }
-            .quantity{
-                
-                bottom:0px;
-                width:100%;
-            }
-            
-            .center{
-                margin-top: 30%;    
-                text-align: center;
-                
-            }
-            #btn_add_to_cart{
-                
-                background: orangered;
-                height:30%;
-                width:50%;
-                left:25%;
-                bottom: 0px;
-                
-            }
-            .btn{
-                width: 100%;
-            }
-.comments{
-    margin-top:50px;
-    /* background:rgb(142, 194, 220); */
-}    
-    .commentList{
-    
-    }
-        .user_comment{
-            
-        }
-            .comment_user_name{
-                font-size:12px;
-                color:#3F6D84
-            }
-            .comment_content{
+.sneakers_img_detail {
+  margin-top: 100px;
+  width: 30%;
+  height: 100%;
+}
+.description {
+  margin-top: 100px;
+  border: solid;
 
-            }
-            .comment_date{
-                font-size:13px;
-                margin-right:0px;
-            }
-    .comment_text_area{
-        
-        margin-bottom:10px; 
-        
-    }
-    .btn_view_comment{
-        height:50px;
-        margin-bottom:5px;    
-    }
-    
+  right: 0px;
+  width: 50%;
+  background: #ffffff;
+}
+.sneakers_name_detail {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  height: 20%;
+  bottom: 13%;
+}
+
+.sneakers_quantity_detail,
+.sneakers_size_detail {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.sneakers_price_detail {
+  text-align: center;
+  font-size: 150%;
+  width: 100%;
+  height: 10%;
+  bottom: 10%;
+}
+.quantity {
+  bottom: 0px;
+  width: 100%;
+}
+
+.center {
+  margin-top: 30%;
+  text-align: center;
+}
+#btn_add_to_cart {
+  background: orangered;
+  height: 30%;
+  width: 50%;
+  left: 25%;
+  bottom: 0px;
+}
+.btn {
+  width: 100%;
+}
+.comments {
+  margin-top: 50px;
+}
+
+.comment_user_name {
+  font-size: 12px;
+  color: #3f6d84;
+}
+
+.comment_date {
+  font-size: 13px;
+  margin-right: 0px;
+}
+.comment_text_area {
+  margin-bottom: 10px;
+}
+.btn_view_comment {
+  height: 50px;
+  margin-bottom: 5px;
+}

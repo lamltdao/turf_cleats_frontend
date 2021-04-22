@@ -14,15 +14,15 @@ export default class Auth extends Component {
     event.preventDefault();
     axios({
       method: "POST",
-      url: `${base_url}/api/auth/login`,
+      url: `${base_url}/api/user/login`,
       data: {
         username: this.state.username,
         password: this.state.password,
       },
     })
       .then((data) => {
-        window.localStorage.setItem("access_token", data.data.token);
-        window.localStorage.setItem("userId", data.data.id);
+        window.localStorage.setItem("access_token", data.data);
+        // window.localStorage.setItem("userId", data.data.id);
         window.location.href = "/";
       })
       .catch((err) => {

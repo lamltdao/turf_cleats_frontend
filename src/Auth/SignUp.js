@@ -6,11 +6,12 @@ import "../stylesheets/Auth.css";
 
 export default class SignUp extends Component {
   state = {
-    username: null,
-    password: null,
-    name: null,
-    phone_number: null,
-    enum: "member",
+    signUpInfo: {
+      username: "",
+      password: "",
+      name: "",
+      phone_number: "",
+    },
     messageInSignUp: "",
   };
   render() {
@@ -123,22 +124,27 @@ export default class SignUp extends Component {
   }
   register = (event) => {
     event.preventDefault();
+    console.log(base_url);
     axios({
       method: "POST",
-      url: base_url + "/api/user",
-      data: this.state,
+      url: `${base_url}/api/user`,
+      data: this.state.signUpInfo,
     })
       .then(() => {
         this.setState({ messageInSignUp: "Register successful" });
       })
       .catch((err) => {
+        console.log(err);
         this.setState({ messageInSignUp: "Register failed" });
       });
   };
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
-    });
+      signUpInfo: {
+        ...this.state.signUpInfo,
+        [event.target.name]: event.target.value,
+      }
+    })
   };
 }
