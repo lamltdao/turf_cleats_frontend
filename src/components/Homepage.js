@@ -16,7 +16,7 @@ export default class Homepage extends Component {
   };
   componentDidMount() {
     axios({
-      url: base_url + "/api/sneakers",
+      url: `${base_url}/api/sneakers`,
       method: "GET",
     })
       .then((data) => {

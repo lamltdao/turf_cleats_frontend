@@ -25,7 +25,7 @@ export default class App extends Component {
     if (access_token) {
       axios({
         method: "GET",
-        url: base_url + "/api/user/account",
+        url: `${base_url}/api/user/account`,
         headers: { 
           'Authorization': `Bearer ${access_token}`  
         },

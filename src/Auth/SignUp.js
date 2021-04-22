@@ -124,7 +124,6 @@ export default class SignUp extends Component {
   }
   register = (event) => {
     event.preventDefault();
-    console.log(base_url);
     axios({
       method: "POST",
       url: `${base_url}/api/user`,

@@ -43,7 +43,7 @@ class SneakersDetail extends Component {
   componentDidMount() {
     const sneakersId = this.props.match.params.id;
     axios({
-      url: base_url + "/api/sneakers/" + sneakersId,
+      url: `${base_url}/api/sneakers/${sneakersId}`,
       method: "GET",
     })
       .then((data) => {
@@ -60,7 +60,7 @@ class SneakersDetail extends Component {
 
     axios({
       method: "GET",
-      url: base_url + "/api/sneakers/" + sneakersId + "/comment",
+      url: `${base_url}/api/sneakers/${sneakersId}/comment`,
     })
       .then((data) => {
         this.setState({ commentList: data.data.comment.reverse() });
@@ -258,7 +258,7 @@ class SneakersDetail extends Component {
   getCommentList = () => {
     axios({
       method: "GET",
-      url: base_url + "/api/sneakers/" + this.state.sneakersId + "/comment",
+      url: `${base_url}/api/sneakers/${this.state.sneakersId}/comment`,
     })
       .then((data) => {
         this.setState({ commentList: data.data.comment.reverse() });

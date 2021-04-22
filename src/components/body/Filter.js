@@ -10,7 +10,7 @@ export default class Filter extends Component {
   }
   componentDidMount() {
     axios({
-      url: base_url + "/api/brand/",
+      url: `${base_url}/api/brand/`,
       method: "GET",
     })
       .then((res) => {
