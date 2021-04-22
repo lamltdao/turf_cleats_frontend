@@ -23,7 +23,6 @@ export default class Homepage extends Component {
         this.setState({ sneakersList: data.data });
       })
       .catch((err) => {
-        console.log(err);
       });
   }
   render() {
